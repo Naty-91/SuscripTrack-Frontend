@@ -1,0 +1,55 @@
+<div class="container-fluid my-5 px-4">
+  <h2 class="mb-4">Panel de Reportes - Administrador</h2>
+
+  <!-- Resumen General -->
+  <div class="row g-4 mb-5">
+    <div class="col-6 col-md-3" *ngFor="let item of resumenGeneral">
+      <div class="card summary-card text-center h-100">
+        <div class="card-body">
+          <h6 class="card-title">{{ item.titulo }}</h6>
+          <p class="display-6">{{ item.valor }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estadísticas Temporales -->
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-4" *ngFor="let chart of estadisticasTemporales">
+      <div class="card h-100">
+        <div class="card-header">{{ chart.titulo }}</div>
+        <div class="card-body">
+          <canvas [id]="chart.id"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Rankings -->
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let bloque of topRankingBloques">
+      <div class="card h-100">
+        <div class="card-header">{{ bloque.titulo }}</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of bloque.items">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alertas y Cambios -->
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-md-6" *ngFor="let alerta of alertas">
+      <div class="card h-100">
+        <div class="card-header">{{ alerta.titulo }}</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of alerta.items">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  color: #333;
+}
+
+.subscription-section {
+  margin-bottom: 2rem;
+}
+
+.subscription-carousel {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem 2rem;  // espacio arriba/abajo y lados
+  scroll-behavior: smooth; // animación al hacer scroll
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;  // espacio entre tarjetas
+}
+
+.subscription-card {
+  flex: 0 0 auto; // evita que se ajusten al contenedor
+  width: 140px;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+
+  span {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+  }
+}

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">SuscripTrack</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">Sobre Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/prestaciones">Prestaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contáctanos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin">Administrador</a>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <!-- Mostrar solo si NO está logueado -->
+       <a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-primary">Log In</a>
+       <a *ngIf="!isLoggedIn" routerLink="/register" class="btn btn-outline-primary">Registrarse</a>
+ 
+
+        <!-- Mostrar solo si SÍ está logueado -->
+        <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-neon">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>

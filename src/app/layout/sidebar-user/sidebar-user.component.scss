@@ -1,0 +1,50 @@
+$header-height: 64px;
+$sidebar-width: 220px;
+
+.user-sidebar {
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  width: $sidebar-width;
+  height: calc(100vh - $header-height);
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  padding: 1rem 0;
+  overflow-y: auto;
+  z-index: 998;
+
+  .sidebar-title {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0 16px;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  a.mat-list-item {
+    color: #333;
+
+    mat-icon {
+      color: #333;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      background-color: #e0e0e0;
+      color: #6f42c1;
+
+      mat-icon {
+        color: #6f42c1;
+      }
+    }
+
+    &.active {
+      background-color: #00796b;
+      color: white;
+
+      mat-icon {
+        color: white;
+      }
+    }
+  }
+}

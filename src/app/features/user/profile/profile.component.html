@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center my-5">
+        <h3 class="fw-bold text-dark">Mi Perfil</h3>
+        <hr>
+      </div>
+
+      <form class="file-upload" (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-xl-8">
+            <!-- Datos de la cuenta -->
+            <div class="bg-secondary-soft px-4 py-5 rounded mb-4 shadow-sm">
+              <h4 class="mb-4 text-dark fw-semibold">Datos de la cuenta</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nombre completo *</label>
+                  <input type="text" class="form-control" formControlName="nombre" placeholder="Introduce tu nombre">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Correo electrónico *</label>
+                  <input type="email" class="form-control" formControlName="correo" placeholder="Introduce tu correo">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Tipo de pago *</label>
+                  <input type="text" class="form-control" formControlName="tipoPago" placeholder="Ej. Visa, PayPal">
+                </div>
+              </div>
+            </div>
+
+            <!-- Cambiar contraseña -->
+            <div class="bg-secondary-soft px-4 py-5 rounded mb-4 shadow-sm">
+              <h4 class="mb-4 text-dark fw-semibold">Cambiar contraseña</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nueva contraseña *</label>
+                  <input type="password" class="form-control" formControlName="password" placeholder="Nueva contraseña">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Confirmar nueva contraseña *</label>
+                  <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirmar contraseña">
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="text-center">
+              <button type="button" class="btn btn-secondary btn-lg me-3 px-4" (click)="toggleEdicion()">
+                {{ estaEditando ? 'Cancelar' : 'Editar' }}
+              </button>
+              <button type="button" class="btn btn-danger-soft btn-lg me-3 px-4" [disabled]="!estaEditando">
+                Eliminar perfil
+              </button>
+              <button type="submit" class="btn btn-success-soft btn-lg px-4" [disabled]="!estaEditando">
+                Guardar cambios
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

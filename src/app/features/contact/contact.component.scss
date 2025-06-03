@@ -1,0 +1,86 @@
+.contact-background {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 60px;
+  
+
+  .overlay {
+    display: none;
+  }
+
+  .contact-section {
+    position: relative;
+    z-index: 2;
+
+    .row {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .contact-card,
+    .contact-info {
+      background-color: #fff;
+      border-radius: 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h4, h5 {
+        font-weight: 600;
+      }
+    }
+
+    .contact-info img {
+      border-radius: 0.5rem;
+      object-fit: cover;
+      max-height: 200px;
+      width: 100%;
+    }
+
+    .title {
+      color: #7c28a3;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      border: 1px solid #ced4da;
+      border-radius: 0.375rem;
+
+      &:focus {
+        border-color: #2441b9;
+        box-shadow: 0 0 0 0.2rem rgba(36, 65, 185, 0.25);
+      }
+    }
+
+    .submit-button {
+      background-color: #2441b9;
+      border-color: #2441b9;
+
+      &:hover {
+        background-color: darken(#2441b9, 8%);
+        border-color: darken(#2441b9, 8%);
+      }
+    }
+
+    .contact-info {
+      background-color: lighten(#7c28a3, 45%);
+      .info-title {
+        color: #7c28a3;
+      }
+    }
+  }
+}
+
+@keyframes waveBG {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

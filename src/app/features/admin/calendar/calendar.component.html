@@ -1,0 +1,38 @@
+<div class="container py-4 mt-5">
+
+  <div class="position-relative mb-3">
+    <button class="btn btn-outline-primary position-absolute top-50 start-0 translate-middle-y" style="z-index: 1" (click)="previousMonth()">
+      &laquo;
+    </button>
+    <h2 class="mb-0 text-center">{{ monthNames[currentMonth] }} {{ currentYear }}</h2>
+    <button class="btn btn-outline-primary position-absolute top-50 end-0 translate-middle-y" style="z-index: 1" (click)="nextMonth()">
+      &raquo;
+    </button>
+  </div>
+
+  <div class="calendar-table table-responsive">
+    <table class="table table-bordered text-center">
+      <thead class="table-light">
+        <tr>
+          <th *ngFor="let day of weekDays">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of calendar">
+          <td *ngFor="let day of week" [ngClass]="{ 'outside': !day.currentMonth, 'today': day.today, 'has-event': day.events.length > 0 }"
+              (click)="addEventToDay(day)"
+              style="cursor: pointer;">
+            <div>{{ day.date.getDate() }}</div>
+            <div
+              class="small text-muted text-decoration-underline"
+              *ngFor="let event of day.events"
+              (click)="removeEventFromDay(day, event); $event.stopPropagation()"
+              style="cursor: pointer;">
+              • {{ event }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

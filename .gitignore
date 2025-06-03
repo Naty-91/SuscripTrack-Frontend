@@ -1,0 +1,8 @@
+# Ignora todo por defecto
+/*
+
+# Pero permite subir la carpeta src/
+!src/
+
+# También permití subir el archivo .gitignore
+!.gitignore

@@ -1,0 +1,35 @@
+.services-background {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #1a1a1a 40%,
+    #7c28a3 70%,
+    #2441b9 90%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
+  animation: waveBG 8s ease-in-out infinite;
+  color: #fff;
+
+  .card {
+    color: #000; // texto oscuro dentro de tarjetas blancas
+  }
+
+  .container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@keyframes waveBG {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}

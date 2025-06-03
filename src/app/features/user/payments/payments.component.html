@@ -1,0 +1,113 @@
+<app-user-sidebar></app-user-sidebar>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+
+<div class="container-xl px-4 mt-4">
+  <!-- Account page navigation-->
+  <nav class="nav nav-borders">
+    <a class="nav-link ms-0" href="#">Perfil</a>
+    <a class="nav-link active" href="#">Facturación</a>
+    <a class="nav-link" href="#">Seguridad</a>
+    <a class="nav-link" href="#">Notificaciones</a>
+  </nav>
+  <hr class="mt-0 mb-4">
+
+  <!-- Payment methods card-->
+  <div class="card card-header-actions mb-4">
+    <div class="card-header">
+      Métodos de Pago
+      <button class="btn btn-sm btn-primary" type="button">Añadir método de pago</button>
+    </div>
+    <div class="card-body px-0">
+      <!-- Payment method 1-->
+      <div class="d-flex align-items-center justify-content-between px-4">
+        <div class="d-flex align-items-center">
+          <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
+          <div class="ms-4">
+            <div class="small">Visa terminada en 1234</div>
+            <div class="text-xs text-muted">Caduca 04/2024</div>
+          </div>
+        </div>
+        <div class="ms-4 small">
+          <div class="badge bg-light text-dark me-3">Predeterminado</div>
+          <a href="#!">Editar</a>
+        </div>
+      </div>
+      <hr>
+      <!-- Payment method 2-->
+      <div class="d-flex align-items-center justify-content-between px-4">
+        <div class="d-flex align-items-center">
+          <i class="fab fa-cc-mastercard fa-2x cc-color-mastercard"></i>
+          <div class="ms-4">
+            <div class="small">Mastercard terminada en 5678</div>
+            <div class="text-xs text-muted">Caduca 05/2022</div>
+          </div>
+        </div>
+        <div class="ms-4 small">
+          <a class="text-muted me-3" href="#!">Establecer como predeterminado</a>
+          <a href="#!">Editar</a>
+        </div>
+      </div>
+      <hr>
+      <!-- Payment method 3-->
+      <div class="d-flex align-items-center justify-content-between px-4">
+        <div class="d-flex align-items-center">
+          <i class="fab fa-cc-amex fa-2x cc-color-amex"></i>
+          <div class="ms-4">
+            <div class="small">American Express terminada en 9012</div>
+            <div class="text-xs text-muted">Caduca 01/2026</div>
+          </div>
+        </div>
+        <div class="ms-4 small">
+          <a class="text-muted me-3" href="#!">Establecer como predeterminado</a>
+          <a href="#!">Editar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Billing history card-->
+  <div class="card mb-4">
+    <div class="card-header">Historial de Facturación</div>
+    <div class="card-body p-0">
+      <div class="table-responsive table-billing-history">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th class="border-gray-200" scope="col">ID de Transacción</th>
+              <th class="border-gray-200" scope="col">Fecha</th>
+              <th class="border-gray-200" scope="col">Importe</th>
+              <th class="border-gray-200" scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#39201</td>
+              <td>15/06/2021</td>
+              <td>29,99 €</td>
+              <td><span class="badge bg-light text-dark">Pendiente</span></td>
+            </tr>
+            <tr>
+              <td>#38594</td>
+              <td>15/05/2021</td>
+              <td>29,99 €</td>
+              <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+            <tr>
+              <td>#38223</td>
+              <td>15/04/2021</td>
+              <td>29,99 €</td>
+              <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+            <tr>
+              <td>#38125</td>
+              <td>15/03/2021</td>
+              <td>29,99 €</td>
+              <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

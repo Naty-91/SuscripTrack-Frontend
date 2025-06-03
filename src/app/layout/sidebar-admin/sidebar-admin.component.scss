@@ -1,0 +1,31 @@
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.sidebar-collapsed {
+  transform: translateX(-100%);
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 10px;
+  left: 230px;
+  z-index: 1100;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar-title {
+  padding: 1rem;
+}

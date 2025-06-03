@@ -1,0 +1,25 @@
+<!-- admin-sidebar.component.html -->
+<button class="toggle-btn" (click)="toggleSidebar()">
+  <mat-icon>{{ sidebarVisible ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+</button>
+
+<div [ngClass]="{ 'sidebar-collapsed': !sidebarVisible }" class="sidebar user-sidebar">
+  <mat-nav-list>
+    <h5 class="sidebar-title">Admin Panel</h5>
+
+    <a mat-list-item routerLink="/admin/calendar" routerLinkActive="active">
+      <mat-icon>event</mat-icon>
+      <span>Calendar</span>
+    </a>
+
+    <a mat-list-item routerLink="/admin/reports" routerLinkActive="active">
+      <mat-icon>bar_chart</mat-icon>
+      <span>Reports</span>
+    </a>
+
+    <a mat-list-item routerLink="/admin/user-mng" routerLinkActive="active">
+      <mat-icon>group</mat-icon>
+      <span>User Management</span>
+    </a>
+  </mat-nav-list>
+</div>
