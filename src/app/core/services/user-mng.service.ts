@@ -24,7 +24,7 @@ export class UserMngService {
     }
 
     // Realiza la solicitud GET al endpoint de usuarios, con el token en los headers.
-    return this.http.get(`${environments.apiUrl}/users`, {
+    return this.http.get(`${environments.apiUrl}/v1/users`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
       }),
@@ -43,7 +43,7 @@ export class UserMngService {
       return throwError(() => new Error('Unauthorized'));
     }
 
-    return this.http.delete(`${environments.apiUrl}/users/${userId}`, {
+    return this.http.delete(`${environments.apiUrl}/v1/users/${userId}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
       }),
@@ -82,9 +82,9 @@ export class UserMngService {
     }
 
     return this.http.post(`${environments.apiUrl}/users`, user, {
-      headers: new HttpHeaders({
+      /* headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
-      }),
+      }), */
     });
   }
 }

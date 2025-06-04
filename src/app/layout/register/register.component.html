@@ -2,53 +2,35 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-
         <!-- Contenedor blanco para el formulario -->
         <div class="bg-white text-dark p-4 rounded-3 shadow">
-
           <h2 class="fw-bold mb-2 text-uppercase text-center">Registro</h2>
           <p class="text-muted mb-5 text-center">Por favor, rellena este formulario para crear una cuenta.</p>
 
-          <form>
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="text" id="registerName" class="form-control form-control-lg" />
+            <div class="form-outline mb-4">
+              <input type="text" id="registerName" class="form-control form-control-lg" formControlName="name" />
               <label class="form-label" for="registerName">Nombre</label>
             </div>
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="registerEmail" class="form-control form-control-lg" />
-              <label class="form-label" for="registerEmail">Correo electrónico</label>
+            <div class="form-outline mb-4">
+              <input type="text" id="registerUser" class="form-control form-control-lg" formControlName="username" />
+              <label class="form-label" for="registerUser">Usuario</label>
             </div>
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="registerPassword" class="form-control form-control-lg" />
+            <div class="form-outline mb-4">
+              <input type="password" id="registerPassword" class="form-control form-control-lg" formControlName="password" />
               <label class="form-label" for="registerPassword">Password</label>
             </div>
 
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="registerConfirmPassword" class="form-control form-control-lg" />
-              <label class="form-label" for="registerConfirmPassword">Confirmar password</label>
-            </div>
-
-            <!-- Checkbox Aceptar Términos -->
-            <div class="form-check d-flex justify-content-start mb-4">
-              <input class="form-check-input" type="checkbox" value="" id="termsCheck" />
-              <label class="form-check-label ms-2" for="termsCheck">
-                Acepto los <a href="#!" class="text-primary">Términos y Condiciones</a>
-              </label>
-            </div>
-
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg px-5 w-100" type="submit">Registrarse</button>
-
+            <button class="btn btn-primary btn-lg px-5 w-100" type="submit">Registrarse</button>
           </form>
 
           <div class="mt-4 text-center">
-            <p class="mb-0">¿Ya tienes una cuenta? <a href="#!" class="fw-bold">Iniciar sesión</a></p>
+            <p class="mb-0">¿Ya tienes una cuenta? <a routerLink="/login" class="fw-bold">Iniciar sesión</a></p>
           </div>
-
-        </div> <!-- fin container blanco -->
-
+        </div>
       </div>
     </div>
   </div>

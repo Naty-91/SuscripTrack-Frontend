@@ -23,7 +23,7 @@ export class UsersMngComponent implements OnInit {
   ngOnInit(): void {
     this.userService.fetchUsers().subscribe({
       next: (res: any) => {
-        this.users = res;
+        this.users = res.content;
       },
       error: (err) => {
         if (err.status === 403) {
