@@ -6,13 +6,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class CarruselComponent implements AfterViewInit {
-  // 🔍 Referencia al contenedor del carrusel en el HTML para manipular el scroll
   @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
 
-  // 📦 Lista de suscripciones (puedes agregar más aquí)
   subscriptions = [
     { name: 'Spotify', image: 'images/spotify.jpg' },
     { name: 'Amazon Prime', image: 'images/amazon.png' },
@@ -28,22 +26,20 @@ export class CarruselComponent implements AfterViewInit {
     { name: 'Birchbox', image: 'images/birchbox.jpg' },
   ];
 
-  // 🚀 Hook que se ejecuta después de que la vista está inicializada
   ngAfterViewInit() {
+    // Duplicar contenido para simular bucle
+    this.subscriptions = [...this.subscriptions, ...this.subscriptions];
     this.startAutoScroll();
   }
 
-  // ⏩ Lógica de scroll automático horizontal
   startAutoScroll() {
     const container = this.scrollContainer.nativeElement;
-    const scrollSpeed = 1; // velocidad en píxeles
-    const interval = 30;   // intervalo en ms
+    const scrollSpeed = 1;
+    const interval = 20;
 
     setInterval(() => {
       container.scrollLeft += scrollSpeed;
-
-      // 🔁 Si llega al final, vuelve al inicio
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+      if (container.scrollLeft >= container.scrollWidth / 2) {
         container.scrollLeft = 0;
       }
     }, interval);

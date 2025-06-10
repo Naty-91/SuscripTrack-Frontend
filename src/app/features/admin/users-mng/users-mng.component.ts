@@ -3,13 +3,15 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common'; // <== IMPORTANTE
 import { AdminSidebarComponent } from '../../../layout/sidebar-admin/sidebar-admin.component';
 import { UserMngService } from '../../../core/services/user-mng.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-users-mng',
   standalone: true,
   imports: [
-    CommonModule,            // <-- Esto activa NgIf, NgFor, DatePipe, SlicePipe, etc.
-    AdminSidebarComponent
+    CommonModule,      
+    AdminSidebarComponent,
+    RouterLink
   ],
   templateUrl: './users-mng.component.html',
   styleUrls: ['./users-mng.component.scss']
@@ -39,6 +41,23 @@ getRolesAsText(user: any): string {
   return user.roles?.map((role: any) => role.name).join(', ') || '';
 }
 
+
+confirmDelete(user: any): void {
+  const confirmed = confirm(`¿Estás seguro de que deseas eliminar al usuario "${user.username}"?`);
+  if (confirmed) {
+    this.userService.deleteUser(user.id).subscribe({
+      next: () => {
+        console.log('Usuario eliminado correctamente.');
+   this.users = this.users.filter(u => u.id !== user.id);
+        console.log('Usuario eliminado correctamente.');
+      },
+      error: (err) => {
+        this.error = 'Error al eliminar el usuario';
+        console.error('Error eliminando usuario:', err);
+      }
+    });
+  }
+}
 
 
 }

@@ -1,4 +1,40 @@
-.gradient-custom {
-  background-color: #ffffff !important;
-  background-image: none !important;
+/* Fondo blanco general */
+.bg-white {
+  background-color: #fff;
 }
+
+/* Tarjeta con fondo degradado personalizado */
+.gradient-card {
+  background: linear-gradient(135deg,  #8f00ff, #bc3cc4, #f984ef, #5b57d6, #2c2c85);
+  background-size: 200% 200%;
+  animation: gradientShift 7s ease infinite;
+  color: white;
+
+  h2, p, label, a {
+    color: white;
+  }
+
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+  }
+
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Animación suave del degradado */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+

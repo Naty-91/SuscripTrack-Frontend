@@ -1,14 +1,13 @@
-<section class="vh-100 gradient-custom">
+<section class="vh-100 bg-white">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <!-- Contenedor blanco para el formulario -->
-        <div class="bg-white text-dark p-4 rounded-3 shadow">
+        <!-- Contenedor con fondo degradado -->
+        <div class="gradient-card p-4 rounded-4 shadow-lg text-white">
           <h2 class="fw-bold mb-2 text-uppercase text-center">Registro</h2>
-          <p class="text-muted mb-5 text-center">Por favor, rellena este formulario para crear una cuenta.</p>
+          <p class="mb-5 text-center">Por favor, rellena este formulario para crear una cuenta.</p>
 
           <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-
             <div class="form-outline mb-4">
               <input type="text" id="registerName" class="form-control form-control-lg" formControlName="name" />
               <label class="form-label" for="registerName">Nombre</label>
@@ -24,11 +23,13 @@
               <label class="form-label" for="registerPassword">Password</label>
             </div>
 
-            <button class="btn btn-primary btn-lg px-5 w-100" type="submit">Registrarse</button>
+            <button class="btn btn-light btn-lg px-5 w-100" type="submit">Registrarse</button>
           </form>
 
           <div class="mt-4 text-center">
-            <p class="mb-0">¿Ya tienes una cuenta? <a routerLink="/login" class="fw-bold">Iniciar sesión</a></p>
+            <p class="mb-0">¿Ya tienes una cuenta?
+              <a routerLink="/login" class="fw-bold text-white">Iniciar sesión</a>
+            </p>
           </div>
         </div>
       </div>

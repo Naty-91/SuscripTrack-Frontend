@@ -27,12 +27,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Contáctanos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin">Administrador</a>
-        </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+  <a class="nav-link" routerLink="/user">Usuarios</a>
+</li>
+<li class="nav-item" *ngIf="isLoggedIn">
+  <a class="nav-link" routerLink="/admin">Administrador</a>
+</li>
       </ul>
 
       <div class="d-flex gap-2">

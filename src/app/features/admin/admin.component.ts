@@ -15,4 +15,8 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
-export class AdminComponent {}
+export class AdminComponent {
+
+
+  
+}

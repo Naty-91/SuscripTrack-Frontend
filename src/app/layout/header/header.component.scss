@@ -1,38 +1,107 @@
 .navbar {
-  position: fixed;     // hace que el header quede fijo arriba
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;       // Define la altura para que el sidebar la tome
-  z-index: 1050;      // suficiente alto para que esté encima del sidebar
-  background-color: #ffffff;
-  transition: background-color 0.3s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  backdrop-filter: none;
+  height: 64px;
+  z-index: 1050;
+
+  background: linear-gradient(90deg, #8f00ff, #bc3cc4, #5b57d6, #25e6ff);
+  background-size: 400% 400%;
+  animation: navbarGradientMove 20s ease infinite;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
 
   .navbar-brand {
-    color: #6f42c1; // morado oscuro
+    color: #fff !important;
     font-weight: bold;
     font-size: 1.7rem;
-    text-shadow: none;
-    animation: none;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
     transition: color 0.3s ease;
 
     &:hover {
-      color: darken(#6f42c1, 10%);
+      color: #ffe79b !important;
     }
   }
 
   .nav-link {
-    color: #212529 !important;
+    color: #ffffff !important;
     font-weight: 500;
-    text-shadow: none;
-    animation: none;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #6f42c1 !important;
+      color: #f984ef !important;
     }
+  }
+
+  .btn-primary {
+    background-color: #9336b4;
+    border-color: #9336b4;
+
+    &:hover {
+      background-color: #bc3cc4;
+      border-color: #bc3cc4;
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: #fff;
+    color: #fff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffe79b;
+    }
+  }
+
+  .btn-neon {
+    background: #dd58d6;
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background: #f984ef;
+    }
+  }
+}
+
+// Animación del gradiente
+@keyframes navbarGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Estilo del menú hamburguesa desplegado
+#navbarResponsive {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+
+  .nav-link {
+    color: #fff !important;
+
+    &:hover {
+      color: #ffe79b !important;
+    }
+  }
+
+  .btn {
+    color: #fff;
+  }
+
+  @media (min-width: 992px) {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
   }
 }

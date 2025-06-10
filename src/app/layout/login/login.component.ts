@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {jwtDecode} from 'jwt-decode';
+import { RouterModule } from '@angular/router';
 
 interface JwtPayload {
   sub: string;
@@ -14,7 +15,7 @@ interface JwtPayload {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

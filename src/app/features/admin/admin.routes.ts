@@ -23,6 +23,12 @@ export const ADMIN_ROUTES: Routes = [
           import('./users-mng/users-mng.component').then(m => m.UsersMngComponent)
       },
       {
+        path: 'user-mng-edit',/* enruta el boton de editar del user-mng del navegador */
+        loadComponent: () =>
+          import('./editar-usuario/editar-usuario.component').then(m => m.EditarUsuarioComponent)
+      },
+   
+      {
         path: '',
         redirectTo: 'profile',
         pathMatch: 'full'

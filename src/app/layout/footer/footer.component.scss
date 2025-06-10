@@ -1,22 +1,25 @@
+.footer-blur {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
-html, body {
-  height: 100%;
-  margin: 0;
+    // Difuminado lateral estático
+    background: linear-gradient(
+      to right,
+      rgba(64, 79, 95, 0),
+      rgb(52, 86, 120) 30%,
+      rgb(0, 76, 151) 70%,
+      rgba(33, 37, 41, 0)
+    );
+
+    z-index: -1;
+  }
 }
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  flex-shrink: 0;
-}
-
-  

@@ -1,1 +1,41 @@
-<p>editar-usuario works!</p>
+<div class="edit-user-container p-4 rounded shadow-sm bg-white">
+  <h2 class="mb-4 text-primary fw-bold">Editar Usuario</h2>
+
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="form-group mb-4">
+      <label for="username" class="form-label fw-semibold">Nombre de usuario</label>
+      <input id="username" type="text" class="form-control" formControlName="username" />
+      <div *ngIf="username.invalid && username.touched" class="form-text text-danger">
+        <small *ngIf="username.errors?.['required']">El usuario es obligatorio.</small>
+        <small *ngIf="username.errors?.['maxlength']">Máximo 50 caracteres.</small>
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="name" class="form-label fw-semibold">Nombre</label>
+      <input id="name" type="text" class="form-control" formControlName="name" />
+      <div *ngIf="name.invalid && name.touched" class="form-text text-danger">
+        <small *ngIf="name.errors?.['required']">El nombre es obligatorio.</small>
+        <small *ngIf="name.errors?.['maxlength']">Máximo 50 caracteres.</small>
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="password" class="form-label fw-semibold">Contraseña</label>
+      <input id="password" type="password" class="form-control" formControlName="password" />
+      <div *ngIf="password.invalid && password.touched" class="form-text text-danger">
+        <small *ngIf="password.errors?.['required']">La contraseña es obligatoria.</small>
+        <small *ngIf="password.errors?.['minlength']">Mínimo 8 caracteres.</small>
+      </div>
+    </div>
+
+    <div class="text-end">
+      <button type="submit"
+              class="btn btn-primary px-4 py-2 fw-semibold"
+              [disabled]="editUserForm.invalid"
+              (click)="onClickGuardar()">
+        Guardar cambios
+      </button>
+    </div>
+  </form>
+</div>

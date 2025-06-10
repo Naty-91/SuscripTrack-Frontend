@@ -1,10 +1,10 @@
 <div class="subscription-section">
   <h2 class="section-title">Suscripciones más populares</h2>
 
-  <div class="subscription-carousel">
+  <div #scrollContainer class="subscription-carousel">
     <div class="card-group">
-      <div 
-        *ngFor="let sub of subscriptions" 
+      <div
+        *ngFor="let sub of subscriptions"
         class="subscription-card"
       >
         <img [src]="sub.image" [alt]="sub.name" />

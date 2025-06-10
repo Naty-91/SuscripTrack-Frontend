@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule } from '@angular/common'; // <-- IMPORTAR ESTO
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common'; // <-- IMPORTAR ESTO
   styleUrls: ['./sidebar-admin.component.scss']
 })
 export class AdminSidebarComponent {
-  sidebarVisible = true;
+   sidebarVisible = true;
 
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
   }
+ 
 }
