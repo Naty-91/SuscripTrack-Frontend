@@ -6,61 +6,41 @@
 
   <hr class="mt-0 mb-4">
 
-  <!-- Payment methods card-->
+  <!-- Payment methods card -->
   <div class="card card-header-actions mb-4">
     <div class="card-header">
       Métodos de Pago
-      <button class="btn btn-sm btn-primary" type="button">Añadir método de pago</button>
+      <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addPaymentModal">
+        Añadir método de pago
+      </button>
     </div>
     <div class="card-body px-0">
-      <!-- Payment method 1-->
-      <div class="d-flex align-items-center justify-content-between px-4">
-        <div class="d-flex align-items-center">
-          <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-          <div class="ms-4">
-            <div class="small">Visa terminada en 1234</div>
-            <div class="text-xs text-muted">Caduca 04/2024</div>
+      <div *ngFor="let method of paymentMethods; let i = index">
+        <div class="d-flex align-items-center justify-content-between px-4">
+          <div class="d-flex align-items-center">
+            <i class="fab fa-cc-visa fa-2x" *ngIf="method.brand === 'Visa'"></i>
+            <i class="fab fa-cc-mastercard fa-2x" *ngIf="method.brand === 'Mastercard'"></i>
+            <i class="fab fa-cc-amex fa-2x" *ngIf="method.brand === 'American Express'"></i>
+            <i class="fab fa-cc-discover fa-2x" *ngIf="method.brand === 'Discover'"></i>
+            <i class="fab fa-cc-paypal fa-2x" *ngIf="method.brand === 'PayPal'"></i>
+            <i class="fas fa-credit-card fa-2x" *ngIf="!['Visa','Mastercard','American Express','Discover','PayPal'].includes(method.brand)"></i>
+
+            <div class="ms-4">
+              <div class="small">{{ method.brand }} terminada en {{ method.last4 }}</div>
+              <div class="text-xs text-muted">Caduca {{ method.expiry }}</div>
+            </div>
+          </div>
+          <div class="ms-4 small">
+            <div *ngIf="method.isDefault" class="badge bg-light text-dark me-3">Predeterminado</div>
+            <a href="#">Editar</a>
           </div>
         </div>
-        <div class="ms-4 small">
-          <div class="badge bg-light text-dark me-3">Predeterminado</div>
-          <a href="#!">Editar</a>
-        </div>
-      </div>
-      <hr>
-      <!-- Payment method 2-->
-      <div class="d-flex align-items-center justify-content-between px-4">
-        <div class="d-flex align-items-center">
-          <i class="fab fa-cc-mastercard fa-2x cc-color-mastercard"></i>
-          <div class="ms-4">
-            <div class="small">Mastercard terminada en 5678</div>
-            <div class="text-xs text-muted">Caduca 05/2022</div>
-          </div>
-        </div>
-        <div class="ms-4 small">
-          <a class="text-muted me-3" href="#!">Establecer como predeterminado</a>
-          <a href="#!">Editar</a>
-        </div>
-      </div>
-      <hr>
-      <!-- Payment method 3-->
-      <div class="d-flex align-items-center justify-content-between px-4">
-        <div class="d-flex align-items-center">
-          <i class="fab fa-cc-amex fa-2x cc-color-amex"></i>
-          <div class="ms-4">
-            <div class="small">American Express terminada en 9012</div>
-            <div class="text-xs text-muted">Caduca 01/2026</div>
-          </div>
-        </div>
-        <div class="ms-4 small">
-          <a class="text-muted me-3" href="#!">Establecer como predeterminado</a>
-          <a href="#!">Editar</a>
-        </div>
+        <hr *ngIf="i < paymentMethods.length - 1">
       </div>
     </div>
   </div>
 
-  <!-- Billing history card-->
+  <!-- Billing history card -->
   <div class="card mb-4">
     <div class="card-header">Historial de Facturación</div>
     <div class="card-body p-0">
@@ -75,33 +55,63 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>#39201</td>
-              <td>15/06/2021</td>
-              <td>29,99 €</td>
-              <td><span class="badge bg-light text-dark">Pendiente</span></td>
-            </tr>
-            <tr>
-              <td>#38594</td>
-              <td>15/05/2021</td>
-              <td>29,99 €</td>
-              <td><span class="badge bg-success">Pagado</span></td>
-            </tr>
-            <tr>
-              <td>#38223</td>
-              <td>15/04/2021</td>
-              <td>29,99 €</td>
-              <td><span class="badge bg-success">Pagado</span></td>
-            </tr>
-            <tr>
-              <td>#38125</td>
-              <td>15/03/2021</td>
-              <td>29,99 €</td>
-              <td><span class="badge bg-success">Pagado</span></td>
+            <tr *ngFor="let item of billingHistory">
+              <td>{{ item.transactionId }}</td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.amount | currency:'EUR' }}</td>
+              <td>
+                <span [ngClass]="{
+                  'badge bg-success': item.status === 'Pagado',
+                  'badge bg-light text-dark': item.status === 'Pendiente'
+                }">{{ item.status }}</span>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para añadir método de pago -->
+<div class="modal fade" id="addPaymentModal" tabindex="-1" aria-labelledby="addPaymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="savePaymentMethod()" #paymentForm="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addPaymentModalLabel">Nuevo método de pago</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="brand" class="form-label">Tipo de tarjeta</label>
+            <select class="form-select" id="brand" [(ngModel)]="newPayment.brand" name="brand" required>
+              <option value="Visa">Visa</option>
+              <option value="Mastercard">Mastercard</option>
+              <option value="American Express">American Express</option>
+              <option value="Discover">Discover</option>
+              <option value="PayPal">PayPal</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="last4" class="form-label">Últimos 4 dígitos</label>
+            <input type="text" maxlength="4" pattern="\\d{4}" class="form-control" id="last4" [(ngModel)]="newPayment.last4" name="last4" required>
+          </div>
+          <div class="mb-3">
+            <label for="expiry" class="form-label">Caducidad (MM/AAAA)</label>
+            <input type="text" class="form-control" id="expiry" placeholder="12/2026" [(ngModel)]="newPayment.expiry" name="expiry" required>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="isDefault" [(ngModel)]="newPayment.isDefault" name="isDefault">
+            <label class="form-check-label" for="isDefault">Establecer como predeterminado</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!paymentForm.form.valid" data-bs-dismiss="modal">
+            Guardar
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

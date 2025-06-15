@@ -25,16 +25,20 @@
               <td>{{ user.username }}</td>
               <td>{{ user.name }}</td>
               <td class="text-center">
-                <a href="#" class="text-info me-2" title="View">
+                <!-- Botón View -->
+                <button (click)="openUserModal(user)" class="btn btn-link text-info p-0 m-0" title="View">
                   <i class="material-icons">visibility</i>
-                </a>
+                </button>
+
+                <!-- Botón Edit -->
                 <a routerLink="/admin/user-mng-edit" class="text-warning me-2" title="Edit">
                   <i class="material-icons">edit</i>
                 </a>
-                <a href="#" (click)="confirmDelete(user)" class="text-danger" title="Delete">
-                  <i class="material-icons">delete</i>
-                </a>
 
+                <!-- Botón Delete -->
+                <button (click)="confirmDelete(user)" class="btn btn-link text-danger p-0 m-0" title="Delete">
+                  <i class="material-icons">delete</i>
+                </button>
               </td>
             </tr>
           </tbody>
@@ -59,6 +63,24 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de visualización -->
+<div class="modal fade" id="viewUserModal" tabindex="-1" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewUserModalLabel">Información del usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>ID:</strong> {{ selectedUser?.id }}</p>
+        <p><strong>Username:</strong> {{ selectedUser?.username }}</p>
+        <p><strong>Name:</strong> {{ selectedUser?.name }}</p>
+        <p><strong>Roles:</strong> {{ getRolesAsText(selectedUser) }}</p>
       </div>
     </div>
   </div>

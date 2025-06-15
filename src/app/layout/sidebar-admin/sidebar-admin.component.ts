@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./sidebar-admin.component.scss']
 })
 export class AdminSidebarComponent {
-   sidebarVisible = true;
+   sidebarVisible = false;/* lo tenia puesto en true y era en false por eso me salia doble si */
 
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
